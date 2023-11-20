@@ -4,7 +4,39 @@ import router from "../router/index"
 import {ref} from "vue"
 import myFooter from "../components/Footer.vue"
 
+const isPasswordValid = ref(true);
 
+const validatePassword=()=> {
+      const lowercaseRegex = /(?=.*[a-z])/;
+      const uppercaseRegex = /(?=.*[A-Z])/;
+      const digitRegex = /(?=.*\d)/;
+      const symbolRegex = /(?=.*[@$!%*?&])/;
+
+      isPasswordValid.value = 
+        lowercaseRegex.test(user.password.value) &&
+        uppercaseRegex.test(user.password.value) &&
+        digitRegex.test(user.password.value) &&
+        symbolRegex.test(user.password.value);
+        return isPasswordValid.value;
+    };
+
+    const getValidationMessage = ()=> {
+      const messages = [];
+
+      if (!/(?=.*[a-z])/.test(user.password.value)) {
+        messages.push('at least one lowercase letter');
+      }
+      if (!/(?=.*[A-Z])/.test(user.password.value)) {
+        messages.push('at least one uppercase letter');
+      }
+      if (!/(?=.*\d)/.test(user.password.value)) {
+        messages.push('at least one digit');
+      }
+      if (!/(?=.*[@$!%*?&])/.test(user.password.value)) {
+        messages.push('at least one symbol');
+      }
+      return `Password must contain ${messages.join(', ')}.`;
+    }
 
 const message= ref('');
 
@@ -34,7 +66,6 @@ const register=async ()=>{
         password:user.password.value,
      }
      if(user.password.value != user.repeatPassword.value){
-       message.value="-PASSWORDS DO NOT MATCH-"
        return;
      }
 
@@ -48,7 +79,7 @@ const register=async ()=>{
 
             else 
             {
-                alert('SUCCESSFULLY REGISTERED')
+                alert('-SUCCESSFULLY REGISTERED-')
                 router.push('/login')
             }
 
@@ -127,7 +158,7 @@ const register=async ()=>{
                 class="block min-h-[auto] w-full border rounded  bg-transparent px-3 py-[0.32rem]  outline-none transition-all duration-200"
                 id="exampleFormControlInput3"
             />
-        
+            <p v-if="!validatePassword() && user.password.value" class="text-green-400 text-sm w-full text-center">{{getValidationMessage()}}</p>
 
         </div>
         <div class="relative mb-6" >
@@ -141,9 +172,9 @@ const register=async ()=>{
                 id="exampleFormControlInput4"
             />
         
-
         </div>
 
+        <div v-if="user.repeatPassword.value && user.password.value !== user.repeatPassword.value " class="text-red-400 text-sm w-full text-center">-PASWORDS DO NOT MATCH-</div>
         <div class="text-red-400 text-sm w-full text-center">{{ message }}</div>
 
 
