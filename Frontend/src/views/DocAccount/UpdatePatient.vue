@@ -3,8 +3,6 @@ import axios from 'axios'
 import {ref} from 'vue'
 import router from '../../router';
 
-const USERS_API_BASE_URL='http://localhost:8080/api/v1/demo'
-
 const editedPatient = JSON.parse(localStorage.getItem('editedPatient'));
 
 
@@ -28,7 +26,7 @@ const updatePatient = async ()=>{
         ptPhoneNo:patient.phoneNo.value
     }
 
-    axios.post(USERS_API_BASE_URL+'/update',requestData, {
+    axios.post(import.meta.env.VITE_RES_BASE_URL+'/update',requestData, {
 
         headers: {
             Authorization : 'Bearer '+ localStorage.getItem('token')
@@ -36,7 +34,7 @@ const updatePatient = async ()=>{
 
        
     }).then((response)=>{
-        console.log(response)
+     
         router.push('/loggedIn')
 
     }).catch()

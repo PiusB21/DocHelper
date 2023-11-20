@@ -3,9 +3,6 @@ import Navbar from '../../components/Navbar.vue'
 import axios from 'axios'
 import {ref} from "vue"
 import router from '../../router';
-import { defineEmits, defineProps } from 'vue';
-
-const USERS_API_BASE_URL='http://localhost:8080/api/v1/demo'
 
 const {EditedPatient} = defineProps(['patient'])
 
@@ -19,7 +16,6 @@ const {EditedPatient} = defineProps(['patient'])
 
 //to edit a patient's details
 const addPatient = async ()=>{
-console.log(localStorage.getItem('token'));
 
    const  requestData = {
         ptName: patient.name.value,
@@ -28,7 +24,7 @@ console.log(localStorage.getItem('token'));
         ptPhoneNo: patient.phoneNo.value
     }
 
-    axios.post(USERS_API_BASE_URL+'/add',requestData,
+    axios.post(import.meta.env.VITE_RES_BASE_URL+'/add',requestData,
         {
             headers: {
             Authorization : 'Bearer '+ localStorage.getItem('token'),
@@ -36,8 +32,7 @@ console.log(localStorage.getItem('token'));
         }
 
     ).then((response)=>{
-        console.log(response)
-      
+
         router.push('/loggedIn')
 
     }).catch((error)=>{

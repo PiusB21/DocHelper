@@ -2,21 +2,16 @@
 import router from "../../router";
 import {ref, onMounted} from "vue";
 import axios from "axios"
-import jwt_decode from 'jwt-decode'
-
-const USERS_API_BASE_URL='http://localhost:8080/api/v1/auth'
-
-
 
 onMounted(() => {
     let data =  getPatients()
-
     });
 
-    const patients = ref([]);
+
+const patients = ref([]);
 //to get all the patients data
 const getPatients=async ()=>{
-    axios.get(USERS_API_BASE_URL+'/fetch_data',{
+    axios.get(import.meta.env.VITE_AUTH_BASE_URL+'/fetch_data',{
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
         },
@@ -24,12 +19,11 @@ const getPatients=async ()=>{
                 email: localStorage.getItem('email'), // Pass email in the request body
               }
     }).then((response)=>{
-        console.log(response.data)
-
+  
         if (response.data != null){
            patients.value= response.data
          }
-          
+    
         else router.push('/login');
         return null;
 

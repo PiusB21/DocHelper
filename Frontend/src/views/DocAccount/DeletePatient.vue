@@ -2,7 +2,7 @@
 import {ref} from 'vue'
 import axios from 'axios'
 import router from '../../router';
-const USERS_API_BASE_URL='http://localhost:8080/api/v1/demo'
+
 
 const Name = ref('')
 const Email = ref('')
@@ -19,10 +19,8 @@ if(localStorage.getItem('deletedPatient')!=null)
 
 //to delete a patient's details
 const deletePatient = async ()=>{
-console.log(localStorage.getItem('token'));
 
-
-    axios.post(USERS_API_BASE_URL+`/delete/${pid}`,null,
+    axios.post(import.meta.env.VITE_RES_BASE_URL+`/delete/${pid}`,null,
         {
             headers: {
             Authorization : 'Bearer '+ localStorage.getItem('token'),
@@ -30,8 +28,7 @@ console.log(localStorage.getItem('token'));
         }
 
     ).then((response)=>{
-        console.log(response)
-      
+
         router.push('/loggedIn')
 
     }).catch((error)=>{

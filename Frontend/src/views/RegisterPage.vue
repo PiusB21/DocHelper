@@ -2,8 +2,9 @@
 import axios from "axios"
 import router from "../router/index"
 import {ref} from "vue"
+import myFooter from "../components/Footer.vue"
 
-const USERS_API_BASE_URL='http://localhost:8080/api/v1/auth'
+
 
 const message= ref('');
 
@@ -13,8 +14,6 @@ const user={
     name:ref(''),
     repeatPassword:ref('')
 }
-
-
 
 
 const reset=()=>{
@@ -39,13 +38,11 @@ const register=async ()=>{
        return;
      }
 
-     await axios.post(USERS_API_BASE_URL+"/register",registerdata).then((response) => {
+     await axios.post(import.meta.env.VITE_AUTH_BASE_URL+"/register",registerdata).then((response) => {
 
         reset()
         
         // Handle the successful response here
-        console.log('Response data:', response.data);
-
            if(response.data.token == null)
              message.value="-USER ALREADY EXISTS-";
 
@@ -73,107 +70,112 @@ const register=async ()=>{
 
 <!-- bg-gradient-to-br from-white via-gray-200 to-[#8B4513] -->
 
-  <div class="h-full fixed inset-0 flex items-center justify-center bg-gradient-to-br from-[white] to-[#71ccd1] bg-opacity-70  ">
+<div class="flex flex-col min-h-screen">
+  <div class=" inset-0 flex flex-1 items-center justify-center bg-gradient-to-br from-[white] to-[#71ccd1] bg-opacity-70  ">
 
-    <section class="  w-[40%] h-auto bg-white border border-cyan-900 m-auto rounded-lg transition-max-height ease-in-out duration-800">
+<section class="  w-[40%] h-auto bg-white border border-cyan-900 m-auto rounded-lg transition-max-height ease-in-out duration-800">
 
-  <div class="container h-full px-6 py-24">
-    <div 
-      class="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
+<div class="container h-full px-6 py-24">
+<div 
+  class="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
 
-      <!-- Left column container with background-->
-      <div class="mb-12 md:mb-0 md:w-8/12 lg:w-6/12 ">
-        <img
-          src="../assets/images/doc3.jpeg"
-          class="w-full h-full"
-          alt="Phone image" />
-          <div class="border-8 border-gradient"></div>
-      </div>
-
-      <!-- Right column container with form -->
-      <div class="md:w-8/12 lg:ml-6 lg:w-5/12 ">
-        <form  @submit.prevent="register" autocomplete="off">
-         
-          <div class="relative mb-6" >
-            <input
-            type="text"
-            v-model="user.name.value"
-            required
-            placeholder="Name"
-            class="block min-h-[auto] w-full border rounded  bg-transparent px-3 py-[0.32rem]  outline-none  transition-max-height duration-300 ease-in-out"
-            id="exampleFormControlInput1"
-            />
-           
-          </div>
-         
-
-          <div class="relative mb-6" >
-            <input
-            type="email"
-            v-model="user.email.value"
-            required
-            placeholder="Email Address"
-            class="block min-h-[auto] w-full border rounded  bg-transparent px-3 py-[0.32rem]  outline-none transition-max-height duration-300 ease-in-out"
-            id="exampleFormControlInput2"
-            />
-           
-          </div>
-
-          <div class="relative mb-6" >
-               
-                <input
-                    type="password"
-                    v-model="user.password.value"
-                    required
-                    placeholder="Password"
-                    class="block min-h-[auto] w-full border rounded  bg-transparent px-3 py-[0.32rem]  outline-none transition-all duration-200"
-                    id="exampleFormControlInput3"
-                />
-            
-
-            </div>
-            <div class="relative mb-6" >
-            
-                <input
-                    type="password"
-                    v-model="user.repeatPassword.value"
-                    required
-                    placeholder="Repeat Password"
-                    class="block min-h-[auto] w-full border rounded  bg-transparent px-3 py-[0.32rem]  outline-none transition-all duration-200"
-                    id="exampleFormControlInput4"
-                />
-            
-
-            </div>
-
-            <div class="text-red-400 text-sm w-full text-center">{{ message }}</div>
-
-
-          <!-- Submit button -->
-          <button
-            type="submit"
-            class="inline-block w-full rounded bg-slate-600 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-            data-te-ripple-init
-            data-te-ripple-color="light">
-            Sign up
-          </button>
-
-          <!-- Divider -->
-          <div class="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
-            <RouterLink
-            to="/login"
-            class="mx-4 mb-0 text-center font-semibold dark:text-slate-600  hover:text-slate-500">
-              SIGN IN
-          </RouterLink>
-          </div>
-
-        </form>
-      </div>
-    </div>
+  <!-- Left column container with background-->
+  <div class="mb-12 md:mb-0 md:w-8/12 lg:w-6/12 ">
+    <img
+      src="../assets/images/doc3.jpeg"
+      class="w-full h-full"
+      alt="Phone image" />
+      <div class="border-8 border-gradient"></div>
   </div>
+
+  <!-- Right column container with form -->
+  <div class="md:w-8/12 lg:ml-6 lg:w-5/12 ">
+    <form  @submit.prevent="register" autocomplete="off">
+     
+      <div class="relative mb-6" >
+        <input
+        type="text"
+        v-model="user.name.value"
+        required
+        placeholder="Name"
+        class="block min-h-[auto] w-full border rounded  bg-transparent px-3 py-[0.32rem]  outline-none  transition-max-height duration-300 ease-in-out"
+        id="exampleFormControlInput1"
+        />
+       
+      </div>
+     
+
+      <div class="relative mb-6" >
+        <input
+        type="email"
+        v-model="user.email.value"
+        required
+        placeholder="Email Address"
+        class="block min-h-[auto] w-full border rounded  bg-transparent px-3 py-[0.32rem]  outline-none transition-max-height duration-300 ease-in-out"
+        id="exampleFormControlInput2"
+        />
+       
+      </div>
+
+      <div class="relative mb-6" >
+           
+            <input
+                type="password"
+                v-model="user.password.value"
+                required
+                placeholder="Password"
+                class="block min-h-[auto] w-full border rounded  bg-transparent px-3 py-[0.32rem]  outline-none transition-all duration-200"
+                id="exampleFormControlInput3"
+            />
+        
+
+        </div>
+        <div class="relative mb-6" >
+        
+            <input
+                type="password"
+                v-model="user.repeatPassword.value"
+                required
+                placeholder="Repeat Password"
+                class="block min-h-[auto] w-full border rounded  bg-transparent px-3 py-[0.32rem]  outline-none transition-all duration-200"
+                id="exampleFormControlInput4"
+            />
+        
+
+        </div>
+
+        <div class="text-red-400 text-sm w-full text-center">{{ message }}</div>
+
+
+      <!-- Submit button -->
+      <button
+        type="submit"
+        class="inline-block w-full rounded bg-slate-600 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+        data-te-ripple-init
+        data-te-ripple-color="light">
+        Sign up
+      </button>
+
+      <!-- Divider -->
+      <div class="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
+        <RouterLink
+        to="/login"
+        class="mx-4 mb-0 text-center font-semibold dark:text-slate-600  hover:text-slate-500">
+          SIGN IN
+      </RouterLink>
+      </div>
+
+    </form>
+  </div>
+</div>
+</div>
 </section>
 
-  </div>
+</div>
+
+<myFooter/>
+</div>
+  
 </template>
 
 <style scoped>
@@ -182,3 +184,4 @@ const register=async ()=>{
     border-image: linear-gradient(to right, transparent, #ffffff) 1;
 }
 </style>
+

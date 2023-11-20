@@ -1,9 +1,8 @@
 <script setup>
 import {ref} from "vue"
 import axios from "axios"
-const USERS_API_BASE_URL='http://localhost:8080/api/v1/auth'
 import router from "../router";
-import jwt_decode from "jwt-decode"
+import myFooter from "../components/Footer.vue"
 
 const message=ref('')
 
@@ -24,10 +23,9 @@ const loginData = {
     password : user.password.value
 }
 
-    axios.post(USERS_API_BASE_URL+'/authenticate',loginData).then((response)=>{
+    axios.post(import.meta.env.VITE_AUTH_BASE_URL+'/authenticate',loginData).then((response)=>{
         reset()
-        console.log(response.data)
-
+        
         if(response.data.token == null)
             message.value='-INCORRECT USERNAME OR PASSWORD-'
         
@@ -51,10 +49,11 @@ const loginData = {
 
 
 <template>
-  
+  <div class="flex flex-col min-h-screen">
 
-  <div class="h-screen flex items-center justify-center bg-gradient-to-br from-[white] to-[#71ccd1] bg-opacity-70 ">
-    <section class="  w-[40%] min-w-[400px] h-auto bg-white  border border-cyan-900 m-auto rounded-lg transition-max-height ease-in-out duration-800">
+  <div class="flex flex-1 items-center justify-center bg-gradient-to-br from-[white] to-[#71ccd1] bg-opacity-70 ">
+
+    <section class="  w-[40%] min-w-[400px] h-auto  bg-white  border border-cyan-900 m-auto rounded-lg transition-max-height ease-in-out duration-800">
   <div class="container h-full px-6 py-24">
     <div
       class="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
@@ -136,4 +135,9 @@ const loginData = {
 </section>
 
   </div>
+
+  <myFooter/>
+
+  </div>
+
 </template>
