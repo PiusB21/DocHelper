@@ -66,8 +66,7 @@ router.beforeEach((to, from, next) => {
         next('/login');
         return;
     }
-    console.log("requiresAuth : "+ to.meta.requiresAuth);
-    console.log("has token : " + localStorage.getItem('token'));
+  
     next()
 })
 
