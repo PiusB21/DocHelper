@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f058427a-738d-481f-8583-9ae7168646cc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/views/DocAccount/AddPatients.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/views/DocAccount/AddPatients.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/views/DocAccount/DeletePatient.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/views/DocAccount/DeletePatient.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/views/DocAccount/DocAccount.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/views/DocAccount/DocAccount.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/views/DocAccount/UpdatePatient.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/views/DocAccount/UpdatePatient.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/views/DocAccount/ViewPatients.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/views/DocAccount/ViewPatients.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/views/LoginPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/views/LoginPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/views/RegisterPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/views/RegisterPage.vue" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2YQwzrxU0By15zHkAVJiyIrSzjy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f058427a-738d-481f-8583-9ae7168646cc" name="Changes" comment="" />
+      <created>1700471386538</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1700471386538</updated>
+    </task>
+    <servers />
+  </component>
+</project>
